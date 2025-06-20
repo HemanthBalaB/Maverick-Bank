@@ -1,0 +1,25 @@
+CREATE DATABASE IF NOT EXISTS maverickbank;
+USE maverickbank;
+
+-- Drop table if it already exists
+DROP TABLE IF EXISTS account_holder;
+
+-- Create the account_holder table
+CREATE TABLE account_holder (
+    account_no BIGINT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    mobile_no VARCHAR(15) NOT NULL,
+    password VARCHAR(100) NOT NULL,
+    balance DOUBLE DEFAULT 0.0
+);
+
+-- Insert sample data
+INSERT INTO account_holder (name, email, mobile_no, password, balance)
+VALUES 
+('John Doe', 'john.doe@example.com', '9876543210', 'password123', 5000.00),
+('Jane Smith', 'jane.smith@example.com', '8765432109', 'securepass', 10000.00),
+('Robert Johnson', 'robert.j@example.com', '7654321098', 'robert123', 7500.00);
+
+-- View all records
+SELECT * FROM account_holder;
