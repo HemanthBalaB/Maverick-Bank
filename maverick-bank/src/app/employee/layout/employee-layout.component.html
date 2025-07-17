@@ -1,0 +1,20 @@
+<div class="layout-container">
+  <aside class="sidebar">
+    <h2>🏦 Employee Panel</h2>
+    <nav>
+      <a routerLink="/employee/dashboard">📊 Dashboard</a>
+      <a routerLink="/employee/review-loans">📄 Review Loans</a>
+    </nav>
+  </aside>
+
+  <main class="main-content">
+    <header class="topbar">
+      <span>Welcome, Employee</span>
+      <button (click)="logout()">Logout</button>
+    </header>
+
+    <section class="content">
+      <router-outlet></router-outlet>
+    </section>
+  </main>
+</div>

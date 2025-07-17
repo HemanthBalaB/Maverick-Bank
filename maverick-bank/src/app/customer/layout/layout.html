@@ -1,0 +1,22 @@
+<div class="layout">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <h2>Maverick Bank</h2>
+    <nav>
+      <a routerLink="/customer/my-accounts" routerLinkActive="active">🏠 My Accounts</a>
+      <a routerLink="/customer/transactions" routerLinkActive="active">💸 Transactions</a>
+      <a routerLink="/customer/reports/transaction-report" routerLinkActive="active">📄 Transaction Report</a>
+      <a routerLink="/customer/loans/apply-loan" routerLinkActive="active">📝 Apply Loan</a>
+      <a routerLink="/customer/loans/my-loans" routerLinkActive="active">📊 My Loans</a>
+      <hr />
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <header class="top-header">
+      <button class="logout-btn" (click)="logout()">🚪 Logout</button>
+    </header>
+    <router-outlet></router-outlet>
+  </main>
+</div>

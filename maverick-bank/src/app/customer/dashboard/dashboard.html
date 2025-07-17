@@ -1,0 +1,57 @@
+<div class="dashboard" *ngIf="!errorMessage; else errorTpl">
+
+  <!-- 🌟 Animated Background Bubbles -->
+  <div class="dashboard-background">
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+  </div>
+
+  <!-- Welcome + Account Meta -->
+  <div class="welcome-header">
+    <h2>Welcome, {{ account?.name || 'Customer' }}!</h2>
+    <div class="account-meta">
+      <div>Acc No: {{ account?.accountNo }}</div>
+      <div>IFSC: {{ account?.ifscCode }}</div>
+      <div>Branch: {{ account?.branch?.branchName }}</div>
+    </div>
+  </div>
+
+  <!-- Balance Card -->
+  <div class="balance-card" *ngIf="account">
+    <div class="balance-header">
+      <span>Account Balance</span>
+      <span class="toggle" (click)="toggleBalance()">
+        {{ showBalance ? 'Hide' : 'Show' }}
+      </span>
+    </div>
+    <div class="balance-value">
+      {{ showBalance ? ('₹' + account.balance) : '••••••••' }}
+    </div>
+  </div>
+
+  <!-- Transactions -->
+  <div class="transactions-section" *ngIf="transactions.length">
+    <div class="header">
+      <h4>Recent Transactions</h4>
+      <a routerLink="/customer/transactions">View All</a>
+    </div>
+    <div class="transaction" *ngFor="let tx of transactions">
+      <div class="tx-icon">💰</div>
+      <div class="tx-info">
+        <span class="desc">{{ tx.type }} – {{ tx.description }}</span>
+        <span class="date">{{ tx.date | date: 'medium' }}</span>
+      </div>
+      <div class="tx-amount" [ngClass]="{ credit: tx.type === 'Deposit', debit: tx.type === 'Withdrawal' }">
+        ₹{{ tx.amount }}
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Error Template -->
+<ng-template #errorTpl>
+  <p class="error-msg">{{ errorMessage }}</p>
+</ng-template>

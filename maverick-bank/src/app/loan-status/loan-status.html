@@ -1,0 +1,40 @@
+<!-- loan-status.component.html -->
+<div class="loan-status-container">
+  <h2>Your Loan Applications</h2>
+
+  <div *ngIf="isLoading" class="loading">
+    Loading your loan applications...
+  </div>
+
+  <div *ngIf="errorMessage" class="error">
+    {{ errorMessage }}
+    <button (click)="loadLoans()" class="retry-btn">Retry</button>
+  </div>
+
+  <div *ngIf="!isLoading && !errorMessage">
+    <div *ngIf="loans.length === 0" class="no-loans">
+      <p>You have no loan applications.</p>
+      <a routerLink="/apply-loan" class="apply-btn">Apply for a Loan</a>
+    </div>
+
+    <div *ngIf="loans.length > 0" class="loans-list">
+      <div class="loan-card" *ngFor="let loan of loans">
+        <div class="loan-header">
+          <h3>{{ loan.loanType }} Loan</h3>
+          <span [class]="getStatusClass(loan.status)">
+            {{ loan.status }}
+          </span>
+        </div>
+        <div class="loan-details">
+          <p><strong>Amount:</strong> {{ loan.amount | currency }}</p>
+          <p><strong>Applied On:</strong> {{ loan.appliedDate | date }}</p>
+          <p><strong>Duration:</strong> {{ loan.durationMonths }} months</p>
+          <p><strong>Purpose:</strong> {{ loan.purpose }}</p>
+        </div>
+        <div *ngIf="loan.status === 'APPROVED'" class="loan-actions">
+          <button (click)="payLoan(loan.id)" class="pay-btn">Pay Loan</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

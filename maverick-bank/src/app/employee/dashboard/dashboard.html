@@ -1,0 +1,71 @@
+<div class="employee-dashboard">
+  <header class="dashboard-header">
+    <h2>Welcome Employee</h2>
+  </header>
+
+  <div class="dashboard-content">
+    <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
+
+    <section>
+      <h3>📂 Search Account</h3>
+      <input type="number" placeholder="Enter Account No" [(ngModel)]="accountSearch" />
+      <button (click)="fetchAccountTransactions()">Search</button>
+    </section>
+
+    <!-- ✅ Account Details Section -->
+    <!-- ✅ Account Details Section -->
+<section *ngIf="accountDetails" class="account-details">
+  <h3>👤 Account Details</h3>
+  <div class="account-card">
+    <div class="account-field">
+      <label>Name:</label>
+      <span>{{ accountDetails.name }}</span>
+    </div>
+    <div class="account-field">
+      <label>Email:</label>
+      <span>{{ accountDetails.email }}</span>
+    </div>
+    <div class="account-field">
+      <label>Mobile:</label>
+      <span>{{ accountDetails.mobileNo }}</span>
+    </div>
+    <div class="account-field">
+      <label>Address:</label>
+      <span>{{ accountDetails.address }}</span>
+    </div>
+    <div class="account-field">
+      <label>Balance:</label>
+      <span>₹{{ accountDetails.balance }}</span>
+    </div>
+    <div class="account-field">
+      <label>IFSC Code:</label>
+      <span>{{ accountDetails.ifscCode }}</span>
+    </div>
+  </div>
+</section>
+
+
+    <!-- ✅ Transaction Table -->
+    <section *ngIf="accountTransactions.length">
+      <h3>📑 Recent Transactions</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Type</th>
+            <th>Amount</th>
+            <th>Description</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let tx of accountTransactions">
+            <td>{{ tx.type }}</td>
+            <td>₹{{ tx.amount }}</td>
+            <td>{{ tx.description }}</td>
+            <td>{{ tx.date | date: 'medium' }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </div>
+</div>

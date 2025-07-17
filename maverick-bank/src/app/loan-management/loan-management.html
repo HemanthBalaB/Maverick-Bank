@@ -1,0 +1,81 @@
+<p>loan-management works!</p>
+<div class="loan-management-container">
+  <h2>Loan Applications Management</h2>
+
+  <div class="management-controls">
+    <div class="search-filter">
+      <input type="text" [(ngModel)]="searchTerm" 
+             (ngModelChange)="filterLoans()" 
+             placeholder="Search by account or name">
+      
+      <select [(ngModel)]="statusFilter" (ngModelChange)="filterLoans()">
+        <option *ngFor="let option of statusOptions" [value]="option.value">
+          {{ option.label }}
+        </option>
+      </select>
+    </div>
+  </div>
+
+  <div *ngIf="isLoading" class="loading-indicator">
+    Loading loan applications...
+  </div>
+
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+
+  <div *ngIf="!isLoading && filteredLoans.length === 0" class="no-results">
+    No loan applications found matching your criteria.
+  </div>
+
+  <table *ngIf="!isLoading && filteredLoans.length > 0">
+    <thead>
+      <tr>
+        <th>Loan ID</th>
+        <th>Account No.</th>
+        <th>Customer</th>
+        <th>Type</th>
+        <th>Amount</th>
+        <th>Duration</th>
+        <th>Applied Date</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let loan of paginatedLoans">
+        <td>{{ loan.id }}</td>
+        <td>{{ loan.accountNo }}</td>
+        <td>{{ loan.customerName || 'N/A' }}</td>
+        <td>{{ loan.loanType }}</td>
+        <td>{{ loan.amount | currency }}</td>
+        <td>{{ loan.durationMonths }} months</td>
+        <td>{{ loan.appliedDate | date }}</td>
+        <td>
+          <span [class]="getStatusClass(loan.status)">
+            {{ loan.status }}
+          </span>
+        </td>
+        <td class="actions">
+          <select *ngIf="loan.status !== 'PAID'" 
+                  [(ngModel)]="loan.status" 
+                  (change)="updateLoanStatus(loan.id, loan.status)">
+            <option value="PENDING">Pending</option>
+            <option value="APPROVED">Approve</option>
+            <option value="REJECTED">Reject</option>
+          </select>
+          <span *ngIf="loan.status === 'PAID'">Completed</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="totalPages > 1" class="pagination-controls">
+    <button (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1">
+      Previous
+    </button>
+    <span>Page {{ currentPage }} of {{ totalPages }}</span>
+    <button (click)="changePage(currentPage + 1)" [disabled]="currentPage === totalPages">
+      Next
+    </button>
+ 

@@ -1,0 +1,50 @@
+<!-- src/app/customer/transactions/transactions.html -->
+
+<div class="transactions-page">
+  <h2>Hello, {{ customerName }} | Balance: ₹{{ balance }}</h2>
+
+  <!-- Tabs -->
+  <div class="tx-actions">
+    <button (click)="setTab('deposit')" [class.active]="activeTab === 'deposit'">💰 Deposit</button>
+    <button (click)="setTab('withdraw')" [class.active]="activeTab === 'withdraw'">💸 Withdraw</button>
+    <button (click)="setTab('transfer')" [class.active]="activeTab === 'transfer'">🔄 Transfer</button>
+  </div>
+
+  <!-- Message -->
+  <div *ngIf="message" class="msg">{{ message }}</div>
+
+  <!-- Forms -->
+  <div class="tx-form">
+    <form *ngIf="activeTab === 'deposit'" (ngSubmit)="onDeposit()">
+      <label>Amount</label>
+      <input type="number" [(ngModel)]="amount" name="depositAmount" required />
+      <button type="submit">Deposit</button>
+    </form>
+
+    <form *ngIf="activeTab === 'withdraw'" (ngSubmit)="onWithdraw()">
+      <label>Amount</label>
+      <input type="number" [(ngModel)]="amount" name="withdrawAmount" required />
+      <button type="submit">Withdraw</button>
+    </form>
+
+    <form *ngIf="activeTab === 'transfer'" (ngSubmit)="onTransfer()">
+      <label>To Account No</label>
+      <input type="number" [(ngModel)]="toAccountId" name="toAccount" required />
+      <label>Amount</label>
+      <input type="number" [(ngModel)]="amount" name="transferAmount" required />
+      <button type="submit">Transfer</button>
+    </form>
+  </div>
+
+  <!-- Recent Transactions -->
+  <h3>Recent Transactions</h3>
+  <div *ngIf="!recentTxns.length">No transactions available.</div>
+  <div class="recent-list" *ngIf="recentTxns.length">
+    <div class="txn" *ngFor="let tx of recentTxns">
+      <span class="icon">{{ tx.type === 'DEPOSIT' ? '💰' : tx.type === 'WITHDRAW' ? '💸' : '🔄' }}</span>
+      <span class="desc">{{ tx.description }}</span>
+      <span class="date">{{ tx.timestamp | date:'short' }}</span>
+      <span class="amt" [class.credit]="tx.type === 'DEPOSIT'">₹{{ tx.amount }}</span>
+    </div>
+  </div>
+</div>

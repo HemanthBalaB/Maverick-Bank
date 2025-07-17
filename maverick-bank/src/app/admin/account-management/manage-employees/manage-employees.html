@@ -1,0 +1,32 @@
+<div class="manage-employee-container">
+  <h2>Manage Employees</h2>
+
+  <div class="actions">
+    <button class="add-btn" routerLink="/admin/dashboard/add-employee">➕ Add New Employee</button>
+
+    <input type="text" [(ngModel)]="searchTerm" placeholder="Search by Email or Name...">
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Mobile</th>
+        <th>Address</th>
+        <th>Role</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let emp of filteredEmployees()">
+        <td>{{ emp.employeeId }}</td>
+        <td>{{ emp.name }}</td>
+        <td>{{ emp.email }}</td>
+        <td>{{ emp.mobileNo }}</td>
+        <td>{{ emp.address }}</td>
+        <td>{{ emp.role }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

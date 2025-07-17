@@ -1,0 +1,34 @@
+<section class="review-loans">
+  <h3>📄 Loan Applications</h3>
+  <input type="text" placeholder="Search by Account No or Status" [(ngModel)]="searchLoan" />
+
+  <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
+
+  <table *ngIf="loanApplications.length">
+    <thead>
+      <tr>
+        <th>Loan ID</th>
+        <th>Account No</th>
+        <th>Amount</th>
+        <th>Purpose</th>
+        <th>Status</th>
+        <th>Applied Date</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let loan of filteredLoans()">
+        <td>{{ loan.loanId }}</td>
+        <td>{{ loan.accountNo }}</td>
+        <td>₹{{ loan.loanAmount }}</td>
+        <td>{{ loan.purpose }}</td>
+        <td>{{ loan.status }}</td>
+        <td>{{ loan.appliedDate | date: 'mediumDate' }}</td>
+        <td>
+          <button (click)="approveLoan(loan.loanId, loan.accountNo)" [disabled]="loan.status !== 'PENDING'">✅</button>
+          <button (click)="rejectLoan(loan.loanId, loan.accountNo)" [disabled]="loan.status !== 'PENDING'">❌</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>

@@ -1,0 +1,33 @@
+<div class="transaction-report">
+
+  <h2>📋 Transaction Report</h2>
+
+  <!-- Mini Statement -->
+  <div class="mini-statement">
+    <h4>🧾 Mini Statement (Last 10 Transactions)</h4>
+    <div *ngIf="!miniStatement.length">No recent transactions found.</div>
+    <div *ngFor="let tx of miniStatement" class="txn">
+      <span class="type">{{ tx.type }}</span>
+      <span class="desc">{{ tx.description }}</span>
+      <span class="date">{{ tx.timestamp | date:'short' }}</span>
+      <span class="amt" [ngClass]="{ credit: tx.type === 'DEPOSIT' }">
+        ₹{{ tx.amount }}
+      </span>
+    </div>
+  </div>
+
+  <!-- Full Statement Download -->
+  <div class="full-statement">
+    <h4>📁 Download Statement by Date Range</h4>
+
+    <label>From:</label>
+    <input type="date" [(ngModel)]="fromDate" name="from" required />
+
+    <label>To:</label>
+    <input type="date" [(ngModel)]="toDate" name="to" required />
+
+    <button (click)="downloadStatementPdf()">⬇️ Download PDF</button>
+  </div>
+
+  <div class="error-msg" *ngIf="errorMessage">{{ errorMessage }}</div>
+</div>

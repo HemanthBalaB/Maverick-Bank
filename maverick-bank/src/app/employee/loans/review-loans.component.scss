@@ -1,0 +1,111 @@
+.review-loans {
+  background: rgba(30, 41, 59, 0.95);
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(10px);
+  color: #f8fafc;
+  font-family: 'Segoe UI', sans-serif;
+
+  h3 {
+    color: #60a5fa;
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+
+  input {
+    padding: 0.75rem 1.2rem;
+    margin: 1rem 0;
+    width: 300px;
+    border-radius: 10px;
+    border: 1px solid #334155;
+    background-color: #0f172a;
+    color: #f8fafc;
+    font-size: 1rem;
+
+    &::placeholder {
+      color: #94a3b8;
+    }
+
+    &:focus {
+      border-color: #3b82f6;
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.4);
+    }
+  }
+
+  .error {
+    color: #f87171;
+    background-color: #4b5563;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+
+  table {
+    width: 100%;
+    margin-top: 2rem;
+    border-collapse: collapse;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #1e293b;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+
+    th {
+      background-color: #3b82f6;
+      color: #f8fafc;
+      padding: 1rem;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    td {
+      padding: 1rem;
+      border-bottom: 1px solid #334155;
+      color: #e2e8f0;
+      font-size: 0.95rem;
+    }
+
+    tr:hover {
+      background-color: #334155;
+    }
+
+    button {
+      cursor: pointer;
+      padding: 0.4rem 0.7rem;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      margin: 0 4px;
+      font-weight: 600;
+      transition: background 0.3s, transform 0.2s;
+
+      &:first-child {
+        background-color: #22c55e;
+        color: #ffffff;
+
+        &:hover {
+          background-color: #16a34a;
+          transform: scale(1.05);
+        }
+      }
+
+      &:last-child {
+        background-color: #ef4444;
+        color: #ffffff;
+
+        &:hover {
+          background-color: #dc2626;
+          transform: scale(1.05);
+        }
+      }
+
+      &:disabled {
+        background-color: #64748b;
+        cursor: not-allowed;
+      }
+    }
+  }
+}

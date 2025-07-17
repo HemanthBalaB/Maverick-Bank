@@ -1,0 +1,139 @@
+.loan-management-container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+
+  h2 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+  }
+
+  .management-controls {
+    margin-bottom: 1.5rem;
+
+    .search-filter {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1rem;
+
+      input, select {
+        padding: 0.75rem;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 1rem;
+
+        &:focus {
+          outline: none;
+          border-color: #3498db;
+        }
+      }
+
+      input {
+        flex: 2;
+      }
+
+      select {
+        flex: 1;
+      }
+    }
+  }
+
+  .loading-indicator, .no-results {
+    text-align: center;
+    padding: 2rem;
+    color: #7f8c8d;
+  }
+
+  .error-message {
+    color: #e74c3c;
+    padding: 1rem;
+    background-color: #fadbd8;
+    border-radius: 4px;
+    text-align: center;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+
+    th, td {
+      padding: 1rem;
+      text-align: left;
+      border-bottom: 1px solid #ecf0f1;
+    }
+
+    th {
+      background-color: #f8f9fa;
+      font-weight: 500;
+      color: #2c3e50;
+    }
+
+    tr:hover {
+      background-color: #f8f9fa;
+    }
+
+    .status-pending {
+      color: #f39c12;
+      font-weight: 500;
+    }
+
+    .status-approved {
+      color: #27ae60;
+      font-weight: 500;
+    }
+
+    .status-rejected {
+      color: #e74c3c;
+      font-weight: 500;
+    }
+
+    .status-paid {
+      color: #3498db;
+      font-weight: 500;
+    }
+
+    .actions {
+      select {
+        padding: 0.5rem;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        background-color: white;
+
+        &:focus {
+          outline: none;
+          border-color: #3498db;
+        }
+      }
+    }
+  }
+
+  .pagination-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+
+    button {
+      padding: 0.5rem 1rem;
+      border: 1px solid #ddd;
+      background-color: white;
+      border-radius: 4px;
+      cursor: pointer;
+
+      &:hover:not(:disabled) {
+        background-color: #f8f9fa;
+      }
+
+      &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+    }
+  }
+}

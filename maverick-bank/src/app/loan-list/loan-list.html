@@ -1,0 +1,42 @@
+<div class="loan-container">
+  <h2>Your Loan Applications</h2>
+  
+  <div *ngIf="isLoading">
+    Loading your loans...
+  </div>
+  
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+  
+  <div *ngIf="loans.length === 0 && !isLoading" class="no-loans">
+    No loans found
+  </div>
+  
+  <table *ngIf="loans.length > 0">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Type</th>
+        <th>Amount</th>
+        <th>Term</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let loan of loans">
+        <td>{{ loan.id }}</td>
+        <td>{{ loan.loanType }}</td>
+        <td>{{ loan.amount | currency }}</td>
+        <td>{{ loan.durationMonths }} months</td>
+        <td [class]="getStatusClass(loan.status)">{{ loan.status }}</td>
+        <td>
+          <button *ngIf="loan.status === 'APPROVED'" (click)="makePayment(loan)">
+            Pay
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

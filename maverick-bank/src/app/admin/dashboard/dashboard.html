@@ -1,0 +1,19 @@
+<div class="admin-layout">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <h2>🏢 Admin Panel</h2>
+    <nav>
+<a routerLink="/admin/dashboard/manage-employee">🛠️ Manage Employee</a>
+      <a routerLink="/admin/manage-user" routerLinkActive="active">📋 Manage User</a>
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="admin-dashboard">
+    <header class="dashboard-header">
+      <h2>Welcome Admin</h2>
+      <button class="logout-btn" (click)="logout()">Logout</button>
+    </header>
+    <router-outlet></router-outlet>
+  </main>
+</div>

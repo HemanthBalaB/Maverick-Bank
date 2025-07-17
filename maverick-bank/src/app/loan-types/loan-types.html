@@ -1,0 +1,22 @@
+<div class="container">
+  <h2>Available Loan Types</h2>
+  
+  <div *ngIf="isLoading" class="loading">
+    Loading loan types...
+  </div>
+  
+  <div *ngIf="errorMessage" class="alert alert-danger">
+    {{ errorMessage }}
+  </div>
+  
+  <div class="loan-types-grid">
+    <div *ngFor="let type of loanTypes" class="loan-card" (click)="selectLoanType(type)">
+      <h3>{{ type.name }}</h3>
+      <p><strong>Interest Rate:</strong> {{ type.interestRate }}%</p>
+      <p><strong>Amount Range:</strong> ${{ type.minAmount | number }} - ${{ type.maxAmount | number }}</p>
+      <p><strong>Term:</strong> {{ type.minTerm }} - {{ type.maxTerm }} months</p>
+      <p>{{ type.description }}</p>
+      <button class="btn btn-primary">Apply Now</button>
+    </div>
+  </div>
+</div>

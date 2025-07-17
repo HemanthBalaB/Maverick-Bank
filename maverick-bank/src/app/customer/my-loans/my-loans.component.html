@@ -1,0 +1,33 @@
+<div class="my-loans-container">
+  <h2>📊 My Loan Applications</h2>
+
+  <div *ngIf="loading">Loading...</div>
+  <div *ngIf="errorMessage" class="error-msg">{{ errorMessage }}</div>
+
+  <table *ngIf="!loading && loans.length" class="loan-table">
+    <thead>
+      <tr>
+        <th>Loan ID</th>
+        <th>Amount (₹)</th>
+        <th>Tenure (months)</th>
+        <th>Purpose</th>
+        <th>Status</th>
+        <th>Applied Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let loan of loans">
+        <td>{{ loan.loanId }}</td>
+        <td>{{ loan.loanAmount }}</td>
+        <td>{{ loan.tenureInMonths }}</td>
+        <td>{{ loan.purpose }}</td>
+        <td [ngClass]="loan.status.toLowerCase()">{{ loan.status }}</td>
+        <td>{{ loan.appliedDate | date: 'mediumDate' }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="!loading && !loans.length" class="no-records">
+    No loan applications found.
+  </div>
+</div>

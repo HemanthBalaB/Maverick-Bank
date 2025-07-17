@@ -1,0 +1,97 @@
+.register-employee-container {
+  max-width: 500px;
+  margin: auto;
+  padding: 20px;
+  background: rgba(30, 41, 59, 0.95);
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+  color: #f8fafc;
+  font-family: 'Segoe UI', sans-serif;
+
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #60a5fa;
+    font-weight: 600;
+    font-size: 20px;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+
+    label {
+      margin: 10px 0 5px;
+      font-size: 14px;
+      color: #f8fafc;
+      font-weight: 500;
+    }
+
+    input {
+      padding: 8px;
+      font-size: 14px;
+      border: 1px solid #334155;
+      border-radius: 5px;
+      background-color: #0f172a;
+      color: #f8fafc;
+
+      &::placeholder {
+        color: #94a3b8;
+      }
+
+      &:focus {
+        border-color: #3b82f6;
+        outline: none;
+        box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.4);
+      }
+    }
+
+    .password-container {
+      position: relative;
+      display: flex;
+      align-items: center;
+
+      input {
+        flex: 1;
+        padding-right: 35px;
+      }
+
+      .eye-icon {
+        position: absolute;
+        right: 10px;
+        font-size: 18px;
+        color: #94a3b8;
+        cursor: pointer;
+        user-select: none;
+
+        &:hover {
+          color: #f8fafc;
+        }
+      }
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px;
+      background-color: #3b82f6;
+      color: #ffffff;
+      font-weight: bold;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background 0.3s, transform 0.2s;
+
+      &:hover {
+        background-color: #2563eb;
+        transform: scale(1.02);
+      }
+
+      &:disabled {
+        background-color: #64748b;
+        cursor: not-allowed;
+      }
+    }
+  }
+}

@@ -1,0 +1,68 @@
+.my-loans-container {
+  padding: 2rem;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #1e293b, #0f172a); // same dark gradient
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+  font-family: 'Segoe UI', sans-serif;
+  color: #f1f5f9;
+}
+
+.loan-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1.5rem;
+  background-color: #0f172a;
+  color: #f1f5f9;
+  border: 1px solid #334155;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.loan-table th,
+.loan-table td {
+  padding: 12px;
+  text-align: left;
+  border: 1px solid #334155;
+}
+
+.loan-table th {
+  background-color: #1e293b;
+  color: #93c5fd;
+}
+
+.loan-table td {
+  background-color: #0f172a;
+  color: #e2e8f0;
+}
+
+.pending {
+  color: #facc15; // amber-400
+  font-weight: 600;
+}
+
+.approved {
+  color: #4ade80; // green-400
+  font-weight: 600;
+}
+
+.rejected {
+  color: #f87171; // red-400
+  font-weight: 600;
+}
+
+.no-records {
+  margin-top: 1.5rem;
+  color: #94a3b8;
+  font-style: italic;
+  text-align: center;
+}
+
+.error-msg {
+  margin-top: 1rem;
+  color: #f87171;
+  background-color: #3f1d1d;
+  padding: 0.75rem;
+  border-radius: 6px;
+  font-weight: 500;
+  text-align: center;
+}
